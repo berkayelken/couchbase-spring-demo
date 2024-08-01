@@ -11,11 +11,11 @@ import org.springframework.data.couchbase.core.CouchbaseTemplate;
 
 @EnableCaching
 @Configuration
-public class CacheManager {
+public class CacheManagerConfiguration {
 	private final CouchbaseConnectionProperties connectionProperties;
 
 	@Autowired
-	public CacheManager(CouchbaseConnectionProperties connectionProperties) {
+	public CacheManagerConfiguration(CouchbaseConnectionProperties connectionProperties) {
 		this.connectionProperties = connectionProperties;
 	}
 

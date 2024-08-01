@@ -4,15 +4,15 @@ import io.github.berkayelken.couchbase.spring.demo.properties.CouchbaseConnectio
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CacheManagerTest {
+public class CacheManagerConfigurationTest {
 
-	private CacheManager createInstance() {
-		return new CacheManager(CouchbaseConnectionPropertiesTest.createTestInstance());
+	private CacheManagerConfiguration createInstance() {
+		return new CacheManagerConfiguration(CouchbaseConnectionPropertiesTest.createTestInstance());
 	}
 
 	@Test
 	public void testCacheManager() {
-		CacheManager cacheManager = createInstance();
+		CacheManagerConfiguration cacheManager = createInstance();
 		Assertions.assertNotNull(cacheManager);
 		Assertions.assertDoesNotThrow(cacheManager::cacheManager);
 	}

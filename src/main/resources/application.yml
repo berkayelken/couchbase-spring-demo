@@ -23,3 +23,9 @@ couchbase-connection:
     username: admin
     password: admin123
     bucket: CachingBucket
+
+couchbase-default-connection:
+  connection-string: 127.0.0.1
+  user-name: admin
+  password: admin123
+  bucket-name: QueryBucket
