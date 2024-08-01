@@ -17,7 +17,7 @@ public class CouchbaseConnectionProperty {
 	private String password;
 	private String bucket;
 
-	public CouchbaseTemplate createTemplate() {
+	CouchbaseTemplate createTemplate() {
 		CouchbaseClientFactory clientFactory = createClientFactory();
 		return new CouchbaseTemplate(clientFactory, new MappingCouchbaseConverter());
 	}
