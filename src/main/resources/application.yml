@@ -3,5 +3,21 @@ server:
 # ---------------------------------------------------------------------------------------------------------------------
 spring:
   application:
-    name: ms_couhbase_spring_demo
+    name: ms_couchbase_spring_demo
 # ---------------------------------------------------------------------------------------------------------------------
+couchbase-connection:
+  command-source:
+    host: 127.0.0.1
+    username: admin
+    password: admin123
+    bucket: CommandBucket
+  query-source:
+    host: 127.0.0.1
+    username: admin
+    password: admin123
+    bucket: QueryBucket
+  caching-source:
+    host: 127.0.0.1
+    username: admin
+    password: admin123
+    bucket: CachingBucket
