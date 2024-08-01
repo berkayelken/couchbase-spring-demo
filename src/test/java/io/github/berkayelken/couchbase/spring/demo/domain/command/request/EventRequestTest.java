@@ -49,6 +49,14 @@ public class EventRequestTest {
 		request.setOperation(EventOperation.DELETE);
 		Assertions.assertEquals(1, request.convertCustomerEvents().size());
 
+		EventRequest filledRequest = createFilledRequest();
+
+		Assertions.assertEquals(2, filledRequest.convertCustomerEvents().size());
+	}
+
+	public static EventRequest createFilledRequest() {
+		EventRequest request = new EventRequest();
+
 		request.setOperation(EventOperation.UPDATE);
 
 		EventFieldRequest fieldRequest = new EventFieldRequest();
@@ -57,6 +65,7 @@ public class EventRequestTest {
 		fieldRequest.setValue(TEST_STR);
 
 		request.setFields(List.of(fieldRequest, fieldRequest));
-		Assertions.assertEquals(2, request.convertCustomerEvents().size());
+
+		return request;
 	}
 }
