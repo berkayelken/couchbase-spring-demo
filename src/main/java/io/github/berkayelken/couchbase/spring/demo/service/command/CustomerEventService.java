@@ -6,6 +6,7 @@ import io.github.berkayelken.couchbase.spring.demo.domain.query.Customer;
 import io.github.berkayelken.couchbase.spring.demo.repository.CommandRepository;
 import io.github.berkayelken.couchbase.spring.demo.service.query.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,12 +26,14 @@ public class CustomerEventService {
 		return customerService.getCustomer(request.getRelatedCustomer());
 	}
 
+	@CacheEvict(value = "customerCache", key = "#request.relatedCustomer")
 	public Customer updateCustomer(EventRequest request) {
 		request.setOperation(EventOperation.UPDATE);
 		repository.saveAll(request.convertCustomerEvents());
 		return customerService.getCustomer(request.getRelatedCustomer());
 	}
 
+	@CacheEvict(value = "customerCache", key = "#request.relatedCustomer")
 	public void deleteCustomer(EventRequest request) {
 		request.setOperation(EventOperation.DELETE);
 		repository.saveAll(request.convertCustomerEvents());
