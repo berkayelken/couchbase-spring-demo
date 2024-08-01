@@ -5,6 +5,8 @@ import io.github.berkayelken.couchbase.spring.demo.exception.EventException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class EventFieldRequestTest {
 	private static final String TEST_STR = "TEST_STR";
 
@@ -52,10 +54,10 @@ public class EventFieldRequestTest {
 	public void testConvertCustomerEvent() {
 		EventFieldRequest request = new EventFieldRequest();
 
-		Assertions.assertThrows(EventException.class, () -> request.convertCustomerEvent(TEST_STR, EventOperation.UPDATE));
+		Assertions.assertThrows(EventException.class, () -> request.convertCustomerEvent(TEST_STR, EventOperation.UPDATE, new AtomicBoolean()));
 
 		request.setField(EventField.NAME);
 		request.setValue(TEST_STR);
-		Assertions.assertDoesNotThrow(() -> request.convertCustomerEvent(TEST_STR, EventOperation.UPDATE));
+		Assertions.assertDoesNotThrow(() -> request.convertCustomerEvent(TEST_STR, EventOperation.UPDATE, new AtomicBoolean()));
 	}
 }

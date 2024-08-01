@@ -10,6 +10,8 @@ import org.springframework.util.StringUtils;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Getter
 @Setter
@@ -28,8 +30,14 @@ public class EventRequest {
 			return Collections.singletonList(new CustomerEvent(relatedCustomer, operation));
 		}
 
-		return fields.stream().filter(Objects::nonNull).map(field -> field.convertCustomerEvent(relatedCustomer, operation))
-				.toList();
+		AtomicBoolean firstOperationOfCreation = new AtomicBoolean();
+		if (operation == EventOperation.CREATE) {
+			relatedCustomer = UUID.randomUUID().toString();
+			firstOperationOfCreation.set(true);
+		}
+
+		return fields.stream().filter(Objects::nonNull)
+				.map(field -> field.convertCustomerEvent(relatedCustomer, operation, firstOperationOfCreation)).toList();
 	}
 
 }

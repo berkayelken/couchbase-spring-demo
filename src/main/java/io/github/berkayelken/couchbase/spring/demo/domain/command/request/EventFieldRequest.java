@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 @Getter
 @Setter
 @ToString
@@ -24,11 +26,27 @@ public class EventFieldRequest {
 		return field.checkValueTypeFeasible(value);
 	}
 
-	CustomerEvent convertCustomerEvent(String relatedCustomer, EventOperation operation) {
+	CustomerEvent convertCustomerEvent(String relatedCustomer, EventOperation operation, AtomicBoolean firstOperationOfCreation) {
 		if(!checkValueTypeFeasible()) {
 			throw new EventException(EVENT_FAILURE);
 		}
 
-		return new CustomerEvent(relatedCustomer, operation, field.getFieldName(), value);
+		EventOperation exactOperation = getExactOperation(operation, firstOperationOfCreation);
+
+		return new CustomerEvent(relatedCustomer, exactOperation, field.getFieldName(), value);
+	}
+
+	private EventOperation getExactOperation(EventOperation operation, AtomicBoolean firstOperationOfCreation) {
+		if (operation != EventOperation.CREATE) {
+			return operation;
+		}
+
+		if(firstOperationOfCreation.get()) {
+			firstOperationOfCreation.set(false);
+			return operation;
+		}
+
+		operation = EventOperation.UPDATE;
+		return operation;
 	}
 }
