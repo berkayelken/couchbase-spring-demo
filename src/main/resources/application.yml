@@ -1,1 +1,7 @@
-spring.application.name=ms_couhbase_spring_demo
+server:
+  port: 9227 # CBS -> C and B are 2 at alphanumeric keyboard, S is 7 at alphanumeric keyboard
+# ---------------------------------------------------------------------------------------------------------------------
+spring:
+  application:
+    name: ms_couhbase_spring_demo
+# ---------------------------------------------------------------------------------------------------------------------
