@@ -1,4 +1,6 @@
 server:
+  servlet:
+    context-path: "/api/couchbase"
   port: 9227 # CBS -> C and B are 2 at alphanumeric keyboard, S is 7 at alphanumeric keyboard
 # ---------------------------------------------------------------------------------------------------------------------
 spring:
