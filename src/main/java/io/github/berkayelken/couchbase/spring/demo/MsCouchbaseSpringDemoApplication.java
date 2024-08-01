@@ -1,4 +1,4 @@
-package io.github.berkayelken.couhbase.spring.demo;
+package io.github.berkayelken.couchbase.spring.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
