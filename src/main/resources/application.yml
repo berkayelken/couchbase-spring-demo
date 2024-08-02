@@ -25,6 +25,11 @@ couchbase-connection:
     username: admin
     password: admin123
     bucket: CachingBucket
+  level-source:
+    host: couchbase://127.0.0.1
+    username: admin
+    password: admin123
+    bucket: LevelBucket
 
 couchbase-default-connection:
   connection-string: "couchbase://127.0.0.1"

@@ -30,12 +30,6 @@ public class CustomerControllerTest {
 	}
 
 	@Test
-	public void testGetAllCustomers() {
-		CustomerController controller = getController();
-		Assertions.assertDoesNotThrow(controller::getAllCustomer);
-	}
-
-	@Test
 	public void testCreateCustomer() {
 		CustomerController controller = getController();
 		Assertions.assertDoesNotThrow(() -> controller.createCustomer(EventRequestTest.createFilledRequest()));

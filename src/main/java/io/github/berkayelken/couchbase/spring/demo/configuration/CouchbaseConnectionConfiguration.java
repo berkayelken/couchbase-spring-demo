@@ -1,6 +1,7 @@
 package io.github.berkayelken.couchbase.spring.demo.configuration;
 
 import io.github.berkayelken.couchbase.spring.demo.domain.command.CustomerEvent;
+import io.github.berkayelken.couchbase.spring.demo.domain.level.CustomerLevel;
 import io.github.berkayelken.couchbase.spring.demo.domain.query.Customer;
 import io.github.berkayelken.couchbase.spring.demo.properties.CouchbaseConnectionProperties;
 import lombok.AccessLevel;
@@ -38,6 +39,7 @@ public class CouchbaseConnectionConfiguration extends AbstractCouchbaseConfigura
 	public void configureRepositoryOperationsMapping(RepositoryOperationsMapping baseMapping) {
 		baseMapping.mapEntity(Customer.class, properties.createQueryConnection());
 		baseMapping.mapEntity(CustomerEvent.class, properties.createCommandConnection());
+		baseMapping.mapEntity(CustomerLevel.class, properties.createLevelConnection());
 	}
 
 }

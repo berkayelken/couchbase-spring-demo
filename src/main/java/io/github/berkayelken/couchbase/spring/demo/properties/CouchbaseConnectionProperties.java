@@ -14,6 +14,7 @@ public class CouchbaseConnectionProperties {
 	private CouchbaseConnectionProperty commandSource;
 	private CouchbaseConnectionProperty querySource;
 	private CouchbaseConnectionProperty cachingSource;
+	private CouchbaseConnectionProperty levelSource;
 
 	public CouchbaseTemplate createCommandConnection() {
 		return commandSource.createTemplate();
@@ -25,5 +26,9 @@ public class CouchbaseConnectionProperties {
 
 	public CouchbaseTemplate createCachingConnection() {
 		return cachingSource.createTemplate();
+	}
+
+	public CouchbaseTemplate createLevelConnection() {
+		return levelSource.createTemplate();
 	}
 }
