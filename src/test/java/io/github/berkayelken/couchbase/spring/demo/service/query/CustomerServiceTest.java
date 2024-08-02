@@ -39,10 +39,4 @@ public class CustomerServiceTest {
 		Assertions.assertDoesNotThrow(() -> service.getCustomer(ID));
 	}
 
-	@Test
-	public void testGetAllCustomers() {
-		CustomerService service = getService();
-
-		Assertions.assertDoesNotThrow(service::getAllCustomers);
-	}
 }

@@ -17,8 +17,8 @@ import org.springframework.data.couchbase.repository.config.RepositoryOperations
 @Getter
 @Setter
 @Configuration
-@ConfigurationProperties("couchbase-default-connection")
-@EnableCouchbaseRepositories ("io.github.berkayelken.couchbase.spring.demo.repository")
+@ConfigurationProperties ("couchbase-default-connection")
+@EnableCouchbaseRepositories (basePackages = { "io.github.berkayelken.couchbase.spring.demo" })
 public class CouchbaseConnectionConfiguration extends AbstractCouchbaseConfiguration {
 	private String connectionString;
 	private String userName;

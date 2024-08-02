@@ -9,13 +9,14 @@ import org.springframework.data.couchbase.core.mapping.Field;
 import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
 import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @ToString
 @Document
-public class Customer {
+public class Customer implements Serializable {
 	@Id
-	@GeneratedValue (strategy = GenerationStrategy.UNIQUE)
 	private String id;
 	@Field
 	private long citizenNumber;

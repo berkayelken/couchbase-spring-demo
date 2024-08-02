@@ -35,11 +35,6 @@ public class CustomerController {
 		return queryService.getCustomer(id);
 	}
 
-	@GetMapping
-	public List<Customer> getAllCustomer() {
-		return queryService.getAllCustomers();
-	}
-
 	@PostMapping
 	public Customer createCustomer(@RequestBody EventRequest request) {
 		return commandService.createCustomer(request);
@@ -48,7 +43,8 @@ public class CustomerController {
 	@PutMapping ("/{id}")
 	public Customer updateCustomer(@PathVariable ("id") String id, @RequestBody EventRequest request) {
 		request.setRelatedCustomer(id);
-		return commandService.updateCustomer(request);
+		commandService.updateCustomer(request);
+		return getCustomer(id);
 	}
 
 	@DeleteMapping ("/{id}")

@@ -10,6 +10,7 @@ import org.springframework.data.couchbase.core.mapping.id.GeneratedValue;
 import org.springframework.data.couchbase.core.mapping.id.GenerationStrategy;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ import java.time.Instant;
 @Document
 public class CustomerEvent {
 	@Id
-	@GeneratedValue (strategy = GenerationStrategy.UNIQUE)
+	@GeneratedValue(strategy = GenerationStrategy.UNIQUE)
 	private String id;
 	private String relatedCustomer;
 	private EventOperation operation;

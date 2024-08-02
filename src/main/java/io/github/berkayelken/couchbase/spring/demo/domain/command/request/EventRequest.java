@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -32,12 +33,16 @@ public class EventRequest {
 
 		AtomicBoolean firstOperationOfCreation = new AtomicBoolean();
 		if (operation == EventOperation.CREATE) {
-			relatedCustomer = UUID.randomUUID().toString();
 			firstOperationOfCreation.set(true);
 		}
 
 		return fields.stream().filter(Objects::nonNull)
-				.map(field -> field.convertCustomerEvent(relatedCustomer, operation, firstOperationOfCreation)).toList();
+				.map(field -> field.convertCustomerEvent(relatedCustomer, operation, firstOperationOfCreation))
+				.collect(Collectors.toList());
+	}
+
+	public void setNewId() {
+		relatedCustomer = UUID.randomUUID().toString();
 	}
 
 }

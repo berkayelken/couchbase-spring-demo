@@ -28,6 +28,6 @@ public class CouchbaseConnectionProperty {
 	}
 
 	private Authenticator createAuthenticator() {
-		return PasswordAuthenticator.builder().username(username).password(password).onlyEnablePlainSaslMechanism().build();
+		return PasswordAuthenticator.create(getUsername(), getPassword());
 	}
 }

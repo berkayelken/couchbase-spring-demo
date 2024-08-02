@@ -1,31 +1,35 @@
 server:
-  servlet:
-    context-path: "/api/couchbase"
   port: 9227 # CBS -> C and B are 2 at alphanumeric keyboard, S is 7 at alphanumeric keyboard
 # ---------------------------------------------------------------------------------------------------------------------
 spring:
   application:
     name: ms_couchbase_spring_demo
+  couchbase:
+    env:
+      timeouts:
+        connect: 30000
 # ---------------------------------------------------------------------------------------------------------------------
 couchbase-connection:
   command-source:
-    host: 127.0.0.1
+    host: couchbase://127.0.0.1
     username: admin
     password: admin123
     bucket: CommandBucket
   query-source:
-    host: 127.0.0.1
+    host: couchbase://127.0.0.1
     username: admin
     password: admin123
     bucket: QueryBucket
   caching-source:
-    host: 127.0.0.1
+    host: couchbase://127.0.0.1
     username: admin
     password: admin123
     bucket: CachingBucket
 
 couchbase-default-connection:
-  connection-string: 127.0.0.1
-  user-name: admin
-  password: admin123
-  bucket-name: QueryBucket
+  connection-string: "couchbase://127.0.0.1"
+  bucket-name: "CommandBucket"
+  user-name: "admin"
+  password: "admin123"
+
+
